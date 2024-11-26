@@ -40,3 +40,12 @@ if password == "123456":
 else:
     print("Access denied!")
 
+alter = input("Bitte geben sie ihr Alter ein")
+if (alter>=18):
+    print("Du darfst Auto fahren!")
+else:
+    if (alter>=16):
+        print("Du darfst den Führerschein machen")
+    else:
+        print("Du bist zu jung für den Führerschein")
+
