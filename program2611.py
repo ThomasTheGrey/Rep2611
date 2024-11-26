@@ -40,7 +40,7 @@ if password == "123456":
 else:
     print("Access denied!")
 
-alter = input("Bitte geben sie ihr Alter ein")
+alter = int (input("Bitte geben sie ihr Alter ein"))
 if (alter>=18):
     print("Du darfst Auto fahren!")
 else:
@@ -48,4 +48,21 @@ else:
         print("Du darfst den Führerschein machen")
     else:
         print("Du bist zu jung für den Führerschein")
+
+
+zahl1 = int(input("Bitte geben sie eine zahl 1 ein:\n"))
+zahl2 = int(input("Bitte geben sie eine zahl 2 ein:\n"))
+
+if (zahl1 == zahl2):
+    print("die Zahlen sind gleich!")
+else:
+    if(zahl1>zahl2):
+        print("die erste Zahl ist größer.")
+    else:
+        print("die zweite Zahl ist größer")
+
+if ((zahl1+zahl2) %2 == 0):
+    print("die Summe der beiden Zahlen ist gerade")
+else:
+    print("Die Summe der beiden Zahlen ist ungerade")
 
