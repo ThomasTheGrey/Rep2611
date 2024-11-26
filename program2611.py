@@ -27,5 +27,16 @@ else:
     else:
         print("die Zahl ist kleiner als 100!")
 
+if ((zahl <= 100)and(zahl>=50)):
+    print("Die Zahl liegt zwischen 50 und 100")
+else:
+    print("Die Zahl liegt nicht zwischen 50 und 100")
 
+
+
+password = input("Bitte geben sie jetzt das Passwort ein!\n")
+if password == "123456":
+    print("Access granted")
+else:
+    print("Access denied!")
 
