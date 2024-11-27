@@ -52,7 +52,7 @@ index = int(input("Bitte geben sie den index des Nutzers an:\n"))
 Email = input("Bitte geben sie die neue Email Adresse ein:\n")
 
 
-# SQL-Befehl, um das Alter eines bestimmten Benutzers zu ändern
+# SQL-Befehl, um die Email eines bestimmten Benutzers zu ändern
 cursor.execute("""
 UPDATE users
 SET email = ?
@@ -69,6 +69,34 @@ results = cursor.fetchall()  # Alle Ergebnisse abrufen
 for row in results:
     print(row)
 
+# SQL-Abfrage mit WHERE-Bedingung, um Einträge zu filtern
+cursor.execute("""
+SELECT id, name, email, age
+FROM users
+WHERE age > ?
+""", (25,))
+
+# Ergebnisse abrufen und ausgeben
+results = cursor.fetchall()  # Alle Zeilen als Liste von Tupeln
+
+# Durch die Ergebnisse iterieren und ausgeben
+for row in results:
+    print(row)
+
+Name = input("Name des gesuchten Nutzers eingeben:\n")
+
+cursor.execute("""
+SELECT id, name, email, age
+FROM users
+WHERE name = ?
+""", (Name,))
+
+# Ergebnisse abrufen und ausgeben
+results = cursor.fetchall()  # Alle Zeilen als Liste von Tupeln
+
+# Durch die Ergebnisse iterieren und ausgeben
+for row in results:
+    print(row)
 
 
 connection.close()
