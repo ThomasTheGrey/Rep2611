@@ -8,7 +8,7 @@ o	Anzeigen aller registrierten Benutzer.
 import sqlite3
 
 # Verbindung zur SQLite-Datenbank herstellen
-connection = sqlite3.connect("nutzer.db")
+connection = sqlite3.connect("user.db")
 cursor = connection.cursor()
 
 # Tabelle für Aufgaben erstellen (falls noch nicht existiert)
@@ -16,12 +16,28 @@ cursor.execute("""
 CREATE TABLE IF NOT EXISTS user (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
-    email TEXT NOT NULL
+    email TEXT NOT NULL,
     password TEXT NOT NULL
 )
 """)
 connection.commit()
 
-Ende = TRUE
+Ende = 0
 
-while (Ende):
+while (Ende == 0):
+    Name = input("Bitte neuen Nutzernamen eingeben:\n")
+    Email = input("Bitte Email eingeben:\n")
+    Password = input("Bitte Passwort eingeben:\n")
+
+    cursor.execute("INSERT INTO user (name, email, password) VALUES (?, ?, ?)", (Name, Email, Password))
+
+    if (Name == ""):
+        Ende = 1
+
+cursor.execute("SELECT * FROM user")
+for row in cursor.fetchall():
+    print(row)
+
+Name = input("Bitte geben sie ihren Login Namen ein:\n")
+Password = input("Passwort?\n")
+
