@@ -24,3 +24,5 @@ while (password != eingabe):
     eingabe = input("Bitte geben sie das Password ein:\n")
 
 print("Glückwunsch! Das war das richtige Passwort.")
+
+# Kommentar
