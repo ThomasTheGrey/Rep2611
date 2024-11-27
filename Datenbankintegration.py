@@ -56,20 +56,26 @@ def aufgabe_loeschen(aufgabe_id):
 # Testaufrufe (Beispiel)
 
 # Aufgabe hinzufügen
-aufgabe_hinzufuegen("Einkaufen gehen")
-aufgabe_hinzufuegen("Hausaufgaben machen")
+
+aufgabe = input("Bitte eine Aufgabe eingeben:\n")
+aufgabe_hinzufuegen(aufgabe)
+
 
 # Alle Aufgaben anzeigen
 alle_aufgaben_anzeigen()
 
 # Aufgabe als erledigt markieren
-aufgabe_erledigt_markieren(1)
+
+index = int(input("welche Aufgabe soll als erledigt markiert werden?\n"))
+aufgabe_erledigt_markieren(index)
 
 # Alle Aufgaben nach der Änderung anzeigen
 alle_aufgaben_anzeigen()
 
 # Aufgabe löschen
-aufgabe_loeschen(2)
+
+index = int(input("Welche Aufgabe soll gelöscht werden?\n"))
+aufgabe_loeschen(index)
 
 # Alle Aufgaben nach der Löschung anzeigen
 alle_aufgaben_anzeigen()
