@@ -1,17 +1,16 @@
 #Alte DB löschen
 import os
 import random
-
+# Löschen der Datenbank falls vorhanden!!
 # Name der Datenbankdatei
-datenbank_name = "questions.db"
+#datenbank_name = "questions.db"
 
 # Überprüfen, ob die Datei existiert
-if os.path.exists(datenbank_name):
-    os.remove(datenbank_name)  # Datei löschen
-    print(f"Datenbank '{datenbank_name}' wurde gelöscht.")
-else:
-    print(f"Datenbank '{datenbank_name}' existiert nicht.")
-
+#if os.path.exists(datenbank_name):
+#    os.remove(datenbank_name)  # Datei löschen
+#   print(f"Datenbank '{datenbank_name}' wurde gelöscht.")
+#else:
+#    print(f"Datenbank '{datenbank_name}' existiert nicht.")
 
 # Erstellen einer Quizfragen Datenbank
 
@@ -59,7 +58,7 @@ def fragen(n):
     result = cursor.fetchone()
     liste =[1,2,3,4]
     random.shuffle(liste)
-    print(f"Hier unsere erste Frage: \n{result[0]}")
+    print(f"Hier die Frage: \n{result[0]}")
     antwort =input(f"Was ist die richtige Antwort?\n[a]{result[liste[0]]}\n[b]{result[liste[1]]}\n[c]{result[liste[2]]}\n[d]{result[liste[3]]}\n")
     global score
     if (antwort == "a" and liste[0]==1):
@@ -88,6 +87,8 @@ def quiz():
     for i in range(anzahl):
         print (i)
         fragen(liste_fragen[i]+1)
+    print(f"Du hast das Quiz beendet. Deine Punktzahl: {score} ")
+
 
 eingabe = ""
 while (eingabe != "x"):

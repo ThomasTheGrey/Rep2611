@@ -49,4 +49,6 @@ WHERE name = ?
 """, (Name,))  # Platzhalter für den Parameter verwenden
 
 # Ergebnisse abrufen und ausgeben
-results = cursor.fetchall()
+cursor.execute("SELECT * FROM users")
+for row in cursor.fetchall():
+    print(row)
