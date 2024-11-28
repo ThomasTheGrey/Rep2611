@@ -37,7 +37,7 @@ connection.commit()
 
 
 # Funktion zur Frageerstellung, Eingabe durch den Nutzer
-
+score = 0
 def frageerstellung():
     Frage = input("Bitte geben Sie eine neue Quizfrage ein:\n")
     AntwortK = input("Bitte die korrekte Antwort eingeben:\n")
@@ -61,23 +61,39 @@ def fragen(n):
     random.shuffle(Liste)
     print(f"Hier unsere erste Frage: {result[0]}")
     antwort =input(f"Was ist die richtige Antwort?\n[a]{result[Liste[0]]}\n[b]{result[Liste[1]]}\n[c]{result[Liste[2]]}\n[d]{result[Liste[3]]}")
-
+    global score
     if (antwort == "a" and Liste[0]==1):
-        print("Richtig!!)")
+        print("Jawohl!)")
+        score = score + 1
     else:
         if (antwort == "b" and Liste[1]==1):
-            print("Richtig!!)")
+            print("Genau!)")
+            score = score + 1
         else:
             if (antwort == "c" and Liste[2]==1):
-                print("Richtig!!)")
+                print("Korrekt!)")
+                score = score + 1
             else:
                 if (antwort == "d" and Liste[3]==1):
-                    print("Richtig!!)")
+                    print("Das ist richtig!)")
+                    score = score+1
                 else:
-                    print("Falsch!!")
+                    print("Leider falsch.")
 
-frageerstellung()
-fragen(1)
+eingabe = ""
+while (eingabe != "x"):
+    eingabe=input("Was möchtest du gerne machen?\nf-frage erstellen\nq - Quiz starten\nx-beenden")
+    if eingabe == "f":
+        frageerstellung()
+    else:
+        if eingabe == "q":
+            fragen(1)
+            fragen(2)
+            print(f"Dein Score ist:{score}")
+        else:
+            print("Tschüss!")
+
+
 
 cursor.execute("SELECT * FROM questions")
 for row in cursor.fetchall():
