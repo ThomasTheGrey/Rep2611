@@ -80,6 +80,14 @@ def fragen(n):
                 else:
                     print("Leider falsch.")
 
+def quiz():
+    cursor.execute("SELECT COUNT(*) FROM questions")
+    anzahl = cursor.fetchone()[0]
+    liste_fragen = (list(range(anzahl)))
+    random.shuffle(liste_fragen)
+    for i in range(anzahl):
+        fragen(liste_fragen[i]-1)
+
 eingabe = ""
 while (eingabe != "x"):
     eingabe=input("Was möchtest du gerne machen?\nf-frage erstellen\nq - Quiz starten\nx-beenden\n")
@@ -87,20 +95,13 @@ while (eingabe != "x"):
         frageerstellung()
     else:
         if eingabe == "q":
-            fragen(1)
-            fragen(2)
+            quiz()
             print(f"Dein Score ist:{score}")
         else:
             print("Tschüss!")
 
 
-def quiz():
-    cursor.execute("SELECT COUNT(*) FROM questions")
-    anzahl = cursor.fetchone()[0]
-    liste_fragen = (list(range(anzahl)))
-    random.shuffle(liste_fragen)
-    for i in range(5):
-        fragen(liste_fragen[i])
+
 
 cursor.execute("SELECT * FROM questions")
 for row in cursor.fetchall():
