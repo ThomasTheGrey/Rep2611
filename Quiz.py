@@ -59,30 +59,30 @@ def fragen(n):
     result = cursor.fetchone()
     Liste =[1,2,3,4]
     random.shuffle(Liste)
-    print(f"Hier unsere erste Frage: {result[0]}")
+    print(f"Hier unsere erste Frage: \n{result[0]}")
     antwort =input(f"Was ist die richtige Antwort?\n[a]{result[Liste[0]]}\n[b]{result[Liste[1]]}\n[c]{result[Liste[2]]}\n[d]{result[Liste[3]]}")
     global score
     if (antwort == "a" and Liste[0]==1):
-        print("Jawohl!)")
+        print("Jawohl!")
         score = score + 1
     else:
         if (antwort == "b" and Liste[1]==1):
-            print("Genau!)")
+            print("Genau!")
             score = score + 1
         else:
             if (antwort == "c" and Liste[2]==1):
-                print("Korrekt!)")
+                print("Korrekt!")
                 score = score + 1
             else:
                 if (antwort == "d" and Liste[3]==1):
-                    print("Das ist richtig!)")
+                    print("Das ist richtig!")
                     score = score+1
                 else:
                     print("Leider falsch.")
 
 eingabe = ""
 while (eingabe != "x"):
-    eingabe=input("Was möchtest du gerne machen?\nf-frage erstellen\nq - Quiz starten\nx-beenden")
+    eingabe=input("Was möchtest du gerne machen?\nf-frage erstellen\nq - Quiz starten\nx-beenden\n")
     if eingabe == "f":
         frageerstellung()
     else:
@@ -98,3 +98,4 @@ while (eingabe != "x"):
 cursor.execute("SELECT * FROM questions")
 for row in cursor.fetchall():
     print(row)
+
