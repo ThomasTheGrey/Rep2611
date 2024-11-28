@@ -57,24 +57,24 @@ def fragen(n):
     """, (n,))
 
     result = cursor.fetchone()
-    Liste =[1,2,3,4]
-    random.shuffle(Liste)
+    liste =[1,2,3,4]
+    random.shuffle(liste)
     print(f"Hier unsere erste Frage: \n{result[0]}")
-    antwort =input(f"Was ist die richtige Antwort?\n[a]{result[Liste[0]]}\n[b]{result[Liste[1]]}\n[c]{result[Liste[2]]}\n[d]{result[Liste[3]]}")
+    antwort =input(f"Was ist die richtige Antwort?\n[a]{result[liste[0]]}\n[b]{result[liste[1]]}\n[c]{result[liste[2]]}\n[d]{result[liste[3]]}")
     global score
-    if (antwort == "a" and Liste[0]==1):
+    if (antwort == "a" and liste[0]==1):
         print("Jawohl!")
         score = score + 1
     else:
-        if (antwort == "b" and Liste[1]==1):
+        if (antwort == "b" and liste[1]==1):
             print("Genau!")
             score = score + 1
         else:
-            if (antwort == "c" and Liste[2]==1):
+            if (antwort == "c" and liste[2]==1):
                 print("Korrekt!")
                 score = score + 1
             else:
-                if (antwort == "d" and Liste[3]==1):
+                if (antwort == "d" and liste[3]==1):
                     print("Das ist richtig!")
                     score = score+1
                 else:
@@ -94,6 +94,13 @@ while (eingabe != "x"):
             print("Tschüss!")
 
 
+def quiz():
+    cursor.execute("SELECT COUNT(*) FROM questions")
+    anzahl = cursor.fetchone()[0]
+    liste_fragen = (list(range(anzahl)))
+    random.shuffle(liste_fragen)
+    for i in range(5):
+        fragen(liste_fragen[i])
 
 cursor.execute("SELECT * FROM questions")
 for row in cursor.fetchall():
