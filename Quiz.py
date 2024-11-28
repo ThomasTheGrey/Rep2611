@@ -42,6 +42,7 @@ def fragen(n):
     result = cursor.fetchone()
 
     print(f"Hier unsere erste Frage: {result[1]}")
+    print(f"Was ist die richtige Antwort?\n[A]{result[2]}\n[B]{result[3]}\n[C]{result[4]}\n[D]{result[5]}")
 
 frageerstellung()
 frageerstellung()
