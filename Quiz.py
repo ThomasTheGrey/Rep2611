@@ -86,7 +86,8 @@ def quiz():
     liste_fragen = (list(range(anzahl)))
     random.shuffle(liste_fragen)
     for i in range(anzahl):
-        fragen(liste_fragen[i]-1)
+        print (i)
+        fragen(liste_fragen[i]+1)
 
 eingabe = ""
 while (eingabe != "x"):
