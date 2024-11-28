@@ -91,7 +91,7 @@ def quiz():
 
 eingabe = ""
 while (eingabe != "x"):
-    eingabe=input("Was möchtest du gerne machen?\nf-frage erstellen\nq - Quiz starten\nx-beenden\n")
+    eingabe=input("Was möchtest du gerne machen?\nf - Frage erstellen\nq - Quiz starten\nx - Programm beenden\n")
     if eingabe == "f":
         frageerstellung()
     else:
