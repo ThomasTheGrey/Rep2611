@@ -11,7 +11,7 @@ import sqlite3
 connection = sqlite3.connect("user.db")
 cursor = connection.cursor()
 
-# Tabelle für Aufgaben erstellen (falls noch nicht existiert)
+# Tabelle für Nutzer erstellen (falls noch nicht existiert)
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS user (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,3 +41,12 @@ for row in cursor.fetchall():
 Name = input("Bitte geben sie ihren Login Namen ein:\n")
 Password = input("Passwort?\n")
 
+# SQL-Abfrage mit WHERE-Bedingung, um Einträge zu filtern
+cursor.execute("""
+SELECT id, name, email, password
+FROM user
+WHERE name = ?
+""", (Name,))  # Platzhalter für den Parameter verwenden
+
+# Ergebnisse abrufen und ausgeben
+results = cursor.fetchall()

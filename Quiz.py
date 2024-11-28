@@ -3,7 +3,7 @@
 import sqlite3
 
 # Verbindung zur SQLite-Datenbank herstellen
-connection = sqlite3.connect("user.db")
+connection = sqlite3.connect("questions.db")
 cursor = connection.cursor()
 
 cursor.execute("""
@@ -13,7 +13,8 @@ CREATE TABLE IF NOT EXISTS questions (
     answer_correct TEXT NOT NULL,
     answer_wrong01 TEXT NOT NULL,
     answer_wrong02 TEXT NOT NULL,
-    answer_wrong03 TEXT NOT NULL   
+    answer_wrong03 TEXT NOT NULL,
+    level INTEGER   
 )
 """)
 connection.commit()
@@ -21,14 +22,30 @@ connection.commit()
 # Funktion zur Frageerstellung, Eingabe durch den Nutzer
 
 def frageerstellung():
-    Frage = input("Bitte neuen Nutzernamen eingeben:\n")
+    Frage = input("Bitte geben Sie eine neue Quizfrage ein:\n")
     AntwortK = input("Bitte die korrekte Antwort eingeben:\n")
     AntwortF1 = input("Bitte eine falsche Antwort (1) eigeben:\n")
     AntwortF2 = input("Bitte eine falsche Antwort (2) eigeben:\n")
     AntwortF3 = input("Bitte eine falsche Antwort (3) eigeben:\n")
+    Level = int(input("Wie schwierig zu beantworten (1-3) ist diese Frage?"))
 
 
-    cursor.execute("INSERT INTO user (question, answer_correct, answer_wrong01, answer_wrong02, answer_wrong03) VALUES (?, ?, ?, ?, ?)", (Frage, AntwortK, AntwortF1, AntwortF2, AntwortF3))
+    cursor.execute("INSERT INTO questions (question, answer_correct, answer_wrong01, answer_wrong02, answer_wrong03, level) VALUES (?, ?, ?, ?, ?)", (Frage, AntwortK, AntwortF1, AntwortF2, AntwortF3, Level))
+
+def fragen(n):
+    cursor.execute("""
+    SELECT question, answer_correct, answer_wrong01, answer_wrong02, answer_wrong03, level
+    FROM questions
+    WHERE id = ?
+    """, (n,))
+
+    result = cursor.fetchone()
+
+    print(f"Hier unsere erste Frage: {result[1]}")
+
+frageerstellung()
+frageerstellung()
+fragen(1)
 
 cursor.execute("SELECT * FROM questions")
 for row in cursor.fetchall():
