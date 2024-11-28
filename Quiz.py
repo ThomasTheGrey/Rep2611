@@ -60,7 +60,7 @@ def fragen(n):
     liste =[1,2,3,4]
     random.shuffle(liste)
     print(f"Hier unsere erste Frage: \n{result[0]}")
-    antwort =input(f"Was ist die richtige Antwort?\n[a]{result[liste[0]]}\n[b]{result[liste[1]]}\n[c]{result[liste[2]]}\n[d]{result[liste[3]]}")
+    antwort =input(f"Was ist die richtige Antwort?\n[a]{result[liste[0]]}\n[b]{result[liste[1]]}\n[c]{result[liste[2]]}\n[d]{result[liste[3]]}\n")
     global score
     if (antwort == "a" and liste[0]==1):
         print("Jawohl!")
